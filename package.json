@@ -11,7 +11,7 @@
     "test:back": "mocha test/backend --recursive --watch",
     "test:front": "mocha test/frontend --compilers js:babel-core/register --recursive --watch",
     "lint": "eslint src/",
-    "build:webpack": "NODE_ENV=production webpack --progress --colors --config webpack.prod.config.js",
+    "build:webpack": "NODE_ENV=production webpack --progress --colors --config webpack.config.js",
     "build": "npm run clean && npm run build:webpack",
     "deploy": "git push heroku master"
   },
