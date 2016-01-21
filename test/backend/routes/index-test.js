@@ -1,10 +1,9 @@
 'use strict';
 
-const request = require('supertest');
+import request from 'supertest';
+import app from '../../../src/backend/routes';
 
-const app = require('../../../src/backend/routes');
-
-describe('Express Routes', () => {
+describe('Backend Express Routes', () => {
   describe('To root path', () => {
     it('Returns 200 status', (done) => {
       request(app)

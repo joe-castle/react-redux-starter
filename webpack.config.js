@@ -3,13 +3,12 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require('path');
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = [{
+  module.exports = {
     entry: './src/frontend/index',
     output: {
-      path: path.join(__dirname, 'build', 'public'),
+      path: `./src/backend/public`,
       filename: 'bundle.js'
     },
     plugins: [
@@ -22,14 +21,14 @@ if (process.env.NODE_ENV === 'production') {
         configureStore: './store/configure-store'
       }),
       new webpack.DefinePlugin({
-        // Provides the NODE_ENV to the above, root and config, through webpack.
+        // Provides NODE_ENV to the above, root and configure, through webpack.
         'process.env': {
           'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }
       }),
       new HtmlWebpackPlugin({
         // Change this for new projects
-        title: 'React Start Project',
+        title: 'React Starter Project',
         template: './src/frontend/index.template.html',
         inject: true
       }),
@@ -47,28 +46,8 @@ if (process.env.NODE_ENV === 'production') {
       }]
     },
     devtool: 'source-map'
-  },{
-    entry: './src/backend/',
-    output: {
-      path: path.join(__dirname, 'build'),
-      filename: 'server.js',
-      libraryTarget: 'commonjs2'
-    },
-    target: 'node',
-    node: {
-      console: false,
-      global: false,
-      process: false,
-      Buffer: false,
-      __filename: false,
-      __dirname: false
-    },
-    // stops webpack from converting nodejs modules to a variable.
-    externals: /^[a-z\-0-9]+$/,
-  }];
-}
-
-if (process.env.NODE_ENV === 'development') {
+  }
+} else {
   module.exports = {
     entry: [
       'webpack-dev-server/client?http://localhost:3001',
@@ -90,11 +69,12 @@ if (process.env.NODE_ENV === 'development') {
         configureStore: './store/configure-store'
       }),
       new HtmlWebpackPlugin({
-        // Change this for new projects
-        title: 'React Start Project',
+        // Change the title for new projects
+        title: 'React Starter Project',
         template: './src/frontend/index.template.html',
         inject: true
-      })
+      }),
+      new ExtractTextPlugin('bundle.css')
     ],
     module: {
       loaders: [{
@@ -103,7 +83,7 @@ if (process.env.NODE_ENV === 'development') {
         exclude: /node_modules/
       },{
         test: /\.scss$/,
-        loaders: ["style", "css", "autoprefixer", "sass"]
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!sass-loader")
       }]
     },
   };
