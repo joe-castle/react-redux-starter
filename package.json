@@ -10,7 +10,9 @@
     "test": "mocha --compilers js:babel-core/register --recursive --watch",
     "build:webpack": "NODE_ENV=production webpack --progress --colors --config webpack.config.js",
     "build": "npm run clean && npm run build:webpack",
-    "deploy": "git push origin master && git push heroku master"
+    "deploy:heroku": "git push heroku master",
+    "deploy:github": "git push origin master",
+    "deploy": "npm run deploy:github && npm run deploy:heroku"
   },
   "author": "Joe Smith <joesmith0488@gmail.com>",
   "license": "MIT",
