@@ -1,5 +1,26 @@
+import { createStore, compose } from 'redux';
+
+import rootReducer from '../reducers/root-reducer';
+import DevTools from '../containers/dev-tools';
+
 if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./configure-store.prod');
+  const finalCreateStore = compose()(createStore);
+
+  module.exports = (initialState) => (
+    finalCreateStore(rootReducer, initialState)
+  );
 } else {
-  module.exports = require('./configure-store.dev');
+  const finalCreateStore = compose(
+    DevTools.instrument()
+  )(createStore);
+
+  module.exports = (initialState) => {
+    const store = finalCreateStore(rootReducer, initialState);
+    if (module.hot) {
+      module.hot.accept('../reducers/root-reducer', () =>
+        store.replaceReducer(require('../reducers/root-reducer'))
+      );
+    }
+    return store;
+  }
 }
