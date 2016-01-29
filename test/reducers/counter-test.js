@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import * as types from '../../../src/frontend/actions/action-types';
-import counter from '../../../src/frontend/reducers/counter';
+import * as types from '../../src/actions/action-types';
+import counter from '../../src/reducers/counter';
 
 describe('Counter Reducer', () => {
   it('Returns the initial state', () => {

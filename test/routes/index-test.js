@@ -1,9 +1,9 @@
 'use strict';
 
 import request from 'supertest';
-import app from '../../../src/backend/routes';
+import app from '../../src/routes';
 
-describe('Backend Express Routes', () => {
+describe('Express Routes', () => {
   describe('To root path', () => {
     it('Returns 200 status', (done) => {
       request(app)

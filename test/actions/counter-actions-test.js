@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import * as types from '../../../src/frontend/actions/action-types';
-import * as actions from '../../../src/frontend/actions/counter-actions'
+import * as types from '../../src/actions/action-types';
+import * as actions from '../../src/actions/counter-actions'
 
 describe('Counter Actions', () => {
   it('Creates an increment action', () => {
