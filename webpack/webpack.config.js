@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-let entry, jsLoaders, cssLoaders
+let entry, cssLoaders, jsLoaders = ['babel']
   , plugins = [
     new webpack.ProvidePlugin({
       // Injects Root and configureStore based on NODE_ENV.
@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === 'production') {
     './src/index'
   ];
   plugins.push(new webpack.HotModuleReplacementPlugin());
-  jsLoaders = ['react-hot', 'babel'];
+  jsLoaders.unshift('react-hot');
   cssLoaders = 'style!css!postcss!sass';
 }
 
@@ -58,14 +58,10 @@ module.exports = {
   },
   plugins: plugins,
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: jsLoaders,
-      exclude: /node_modules/
-    },{
-      test: /\.scss$/,
-      loader: cssLoaders
-    }]
+    loaders: [
+      { test: /\.js$/, loaders: jsLoaders, exclude: /node_modules/},
+      { test: /\.scss$/, loader: cssLoaders}
+    ]
   },
   postcss: () => [autoprefixer],
   devtool: 'source-map'
