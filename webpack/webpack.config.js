@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-let entry, jsLoaders
+let entry, jsLoaders, cssLoaders
   , plugins = [
     new webpack.ProvidePlugin({
       // Injects Root and configureStore based on NODE_ENV.
@@ -18,15 +18,16 @@ let entry, jsLoaders
     new HtmlWebpackPlugin({
       // Change the title for new projects
       title: 'React Starter Project',
-      template: './src/frontend/index.template.html',
+      description: 'React-Redux Starter Project',
+      template: './src/index.template.html',
       inject: true
-    }),
-    new ExtractTextPlugin('bundle.css')
+    })
   ];
 
 if (process.env.NODE_ENV === 'production') {
-  entry = './src/frontend/index';
+  entry = './src/index';
   plugins = plugins.concat([
+    new ExtractTextPlugin('bundle.css'),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.DefinePlugin({
       // Provides NODE_ENV to provide plugin, root and configure, through webpack.
@@ -37,14 +38,16 @@ if (process.env.NODE_ENV === 'production') {
     })
   ]);
   jsLoaders = ['babel'];
+  cssLoaders = ExtractTextPlugin.extract('style', 'css!postcss!sass');
 } else {
   entry = [
     'webpack-dev-server/client?http://localhost:3001',
     'webpack/hot/only-dev-server',
-    './src/frontend/index'
+    './src/index'
   ];
   plugins.push(new webpack.HotModuleReplacementPlugin());
   jsLoaders = ['react-hot', 'babel'];
+  cssLoaders = 'style!css!postcss!sass';
 }
 
 module.exports = {
@@ -61,7 +64,7 @@ module.exports = {
       exclude: /node_modules/
     },{
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
+      loader: cssLoaders
     }]
   },
   postcss: () => [autoprefixer],

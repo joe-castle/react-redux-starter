@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'production') {
   );
 } else {
   const finalCreateStore = compose(
+    // midleware before DevTools
     DevTools.instrument()
   )(createStore);
 

@@ -1,4 +1,4 @@
-   'use strict';
+'use strict';
 
 const app = require('./routes');
 
@@ -9,5 +9,5 @@ app.listen(port, () =>
 
 // React-Hot-Reload Server. For development only.
 if (process.env.NODE_ENV !== 'production') {
-  require('../../webpack/webpack.devserver');
+  require('../webpack/webpack.devserver');
 }

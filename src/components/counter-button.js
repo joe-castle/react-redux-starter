@@ -8,7 +8,6 @@ const CounterButton = ({onChangeClick, displayText}) => (
     {displayText}
   </button>
 );
-
 CounterButton.propTypes = {
   displayText: PropTypes.string.isRequired,
   onChangeClick: PropTypes.func.isRequired
