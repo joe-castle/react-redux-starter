@@ -9,5 +9,5 @@ app.listen(port, () =>
 
 // React-Hot-Reload Server. For development only.
 if (process.env.NODE_ENV !== 'production') {
-  require('../frontend/devserver');
+  require('../../webpack/webpack.devserver');
 }
