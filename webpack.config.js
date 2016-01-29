@@ -22,6 +22,7 @@ if (process.env.NODE_ENV === 'production') {
       }),
       new webpack.DefinePlugin({
         // Provides NODE_ENV to the above, root and configure, through webpack.
+        // This is only required for build.
         'process.env': {
           'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }
@@ -42,6 +43,7 @@ if (process.env.NODE_ENV === 'production') {
         exclude: /node_modules/
       },{
         test: /\.scss$/,
+        //TODO: USE POSTCSS-LOADER INSTEAD OF AUTOPREFIXER-LOADER
         loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!sass-loader")
       }]
     },
@@ -83,6 +85,7 @@ if (process.env.NODE_ENV === 'production') {
         exclude: /node_modules/
       },{
         test: /\.scss$/,
+        //TODO: USE POSTCSS-LOADER INSTEAD OF AUTOPREFIXER-LOADER
         loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader!sass-loader")
       }]
     },
