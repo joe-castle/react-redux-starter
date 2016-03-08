@@ -1,11 +1,6 @@
-// Utilities
-@import 'components/_variables.scss';
-
-// Base
-@import 'components/_typography.scss';
-
-// Layout
-@import 'components/_body.scss';
-
-// Components
-@import 'components/_header.scss';
+@import 'utils/all';
+@import 'base/all';
+@import 'vendors/all';
+@import 'components/all';
+@import 'layout/all';
+@import 'themes/all';
