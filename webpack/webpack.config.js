@@ -5,23 +5,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-let entry, cssLoaders, jsLoaders = ['babel']
+let entry, cssLoaders = 'style!css!postcss!sass', jsLoaders = ['babel']
   , plugins = [
     new webpack.ProvidePlugin({
-      // Injects Root and configureStore based on NODE_ENV.
-      // Provides Redux devtools if in development,
-      // and strips them if in production.
-      // See /src/frontend/root.js.
-      Root: './root',
+      // Injects configureStore based on NODE_ENV.
+      // Enables hot reloader if in dev mode.
       configureStore: './store/configure-store'
-    }),
-    new HtmlWebpackPlugin({
-      // Change the title for new projects
-      title: 'React Starter Project',
-      description: 'React-Redux Starter Project',
-      template: './src/index.template.html',
-      inject: true
     })
+    // new HtmlWebpackPlugin({
+    //   // Change the title for new projects
+    //   title: 'React Starter Project',
+    //   description: 'React-Redux Starter Project',
+    //   template: './src/index.template.html',
+    //   inject: true
+    // })
   ];
 
 if (process.env.NODE_ENV === 'production') {
@@ -30,7 +27,7 @@ if (process.env.NODE_ENV === 'production') {
     new ExtractTextPlugin('bundle.css'),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.DefinePlugin({
-      // Provides NODE_ENV to provide plugin, root and configure, through webpack.
+      // Provides NODE_ENV to provide plugin for configureStore.
       // This is only required for build.
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
@@ -38,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
     })
   ]);
   jsLoaders = ['babel'];
-  cssLoaders = ExtractTextPlugin.extract('style', 'css!postcss!sass');
+  cssLoaders = ExtractTextPlugin.extract(cssLoaders);
 } else {
   entry = [
     'webpack-dev-server/client?http://localhost:3001',
@@ -47,13 +44,12 @@ if (process.env.NODE_ENV === 'production') {
   ];
   plugins.push(new webpack.HotModuleReplacementPlugin());
   jsLoaders.unshift('react-hot');
-  cssLoaders = 'style!css!postcss!sass';
 }
 
 module.exports = {
   entry: entry,
   output: {
-    path: `${__dirname}/../src/public`,
+    path: `${__dirname}/../build`,
     filename: 'bundle.js'
   },
   plugins: plugins,
@@ -63,6 +59,6 @@ module.exports = {
       { test: /\.scss$/, loader: cssLoaders}
     ]
   },
-  postcss: () => [autoprefixer],
+  postcss: [autoprefixer],
   devtool: 'source-map'
 };

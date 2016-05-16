@@ -1,8 +1,8 @@
-import { expect } from 'chai';
+import {expect} from 'chai';
 import React from 'react';
 import sd from 'skin-deep';
 
-import { App } from '../src/containers/app';
+import {App} from '../src/components/app';
 
 describe('App Container (without store)', () => {
   let tree;

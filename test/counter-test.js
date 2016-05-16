@@ -1,4 +1,4 @@
-import { expect } from 'chai';
+import {expect} from 'chai';
 
 import * as types from '../src/actions/action-types';
 import counter from '../src/reducers/counter';

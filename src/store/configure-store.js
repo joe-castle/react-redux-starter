@@ -1,27 +1,24 @@
-import { createStore, compose } from 'redux';
+import {createStore} from 'redux';
 
-import rootReducer from '../reducers/root-reducer';
-import DevTools from '../containers/dev-tools';
+import rootReducer from '../reducers';
 
 if (process.env.NODE_ENV === 'production') {
-  const finalCreateStore = compose()(createStore);
-
-  module.exports = (initialState) => (
-    finalCreateStore(rootReducer, initialState)
-  );
+  module.exports = (initialState) =>
+    createStore(rootReducer, initialState,
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+    );
 } else {
-  const finalCreateStore = compose(
-    // midleware before DevTools
-    DevTools.instrument()
-  )(createStore);
-
   module.exports = (initialState) => {
-    const store = finalCreateStore(rootReducer, initialState);
+    const store = createStore(rootReducer, initialState,
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+    );
+
     if (module.hot) {
-      module.hot.accept('../reducers/root-reducer', () =>
-        store.replaceReducer(require('../reducers/root-reducer'))
+      module.hot.accept('../reducers', () =>
+        store.replaceReducer(rootReducer)
       );
     }
+
     return store;
   }
 }

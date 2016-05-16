@@ -1,8 +1,11 @@
 'use strict';
 
-const express = require('express');
+import express from 'express';
+import serverRender from '../server-render';
+
 const app = express();
 
-app.use('/', express.static(`${__dirname}/../public`));
+app.use(express.static(`${__dirname}/../../build`));
+app.use(serverRender);
 
-module.exports = app;
+export default app;

@@ -1,6 +1,21 @@
 import './assets/sass/main.scss';
 
 import React from 'react';
-import { render } from 'react-dom';
+import {render} from 'react-dom';
 
-render(<Root />, document.getElementById('root'));
+import App from './components/app';
+
+const store = configureStore(__INITIAL_STATE__);
+
+const rend = () => {
+  render(
+    <App dispatch={store.dispatch}
+      {...store.getState()}
+    />,
+    document.getElementById('root')
+  );
+};
+
+rend();
+
+store.subscribe(rend);
