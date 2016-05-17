@@ -5,7 +5,7 @@ import serverRender from '../server-render';
 
 const app = express();
 
-app.use(express.static(`${__dirname}/../../build`));
+app.use(express.static(`${__dirname}/../assets`));
 app.use(serverRender);
 
 export default app;

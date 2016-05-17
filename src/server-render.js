@@ -27,6 +27,6 @@ const template = `<!DOCTYPE html>
     </script>
     <script src="/bundle.js"></script>
   </body>
-</html>`
+</html>`;
 
 export default (req, res) => res.send(template);

@@ -14,6 +14,6 @@ const CounterButton = ({
 CounterButton.propTypes = {
   displayText: PropTypes.string.isRequired,
   onChangeClick: PropTypes.func.isRequired
-}
+};
 
 export default CounterButton;

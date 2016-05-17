@@ -5,7 +5,7 @@ import {render} from 'react-dom';
 
 import App from './components/app';
 
-const store = configureStore(__INITIAL_STATE__);
+const store = configureStore(window.__INITIAL_STATE__);
 
 const rend = () => {
   render(

@@ -5,24 +5,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-let entry, cssLoaders = 'style!css!postcss!sass', jsLoaders = ['babel']
+let entry = './src/index'
+  , cssLoaders = ExtractTextPlugin.extract('style', '!css!postcss!sass')
+  , jsLoaders = ['babel']
   , plugins = [
-    new webpack.ProvidePlugin({
-      // Injects configureStore based on NODE_ENV.
-      // Enables hot reloader if in dev mode.
-      configureStore: './store/configure-store'
-    })
-    // new HtmlWebpackPlugin({
-    //   // Change the title for new projects
-    //   title: 'React Starter Project',
-    //   description: 'React-Redux Starter Project',
-    //   template: './src/index.template.html',
-    //   inject: true
-    // })
+    // Injects configureStore based on NODE_ENV.
+    // Enables hot reloader if in dev mode.
+    new webpack.ProvidePlugin({configureStore: './store/configure-store'})
   ];
 
 if (process.env.NODE_ENV === 'production') {
-  entry = './src/index';
   plugins = plugins.concat([
     new ExtractTextPlugin('bundle.css'),
     new webpack.optimize.UglifyJsPlugin(),
@@ -34,8 +26,6 @@ if (process.env.NODE_ENV === 'production') {
       }
     })
   ]);
-  jsLoaders = ['babel'];
-  cssLoaders = ExtractTextPlugin.extract(cssLoaders);
 } else {
   entry = [
     'webpack-dev-server/client?http://localhost:3001',
@@ -44,19 +34,20 @@ if (process.env.NODE_ENV === 'production') {
   ];
   plugins.push(new webpack.HotModuleReplacementPlugin());
   jsLoaders.unshift('react-hot');
+  cssLoaders = 'style!css!postcss!sass';
 }
 
 module.exports = {
-  entry: entry,
+  entry,
   output: {
-    path: `${__dirname}/../build`,
-    filename: 'bundle.js'
+    path: `${__dirname}/../build/assets`,
+    filename: 'bundle.js',
   },
-  plugins: plugins,
+  plugins,
   module: {
     loaders: [
-      { test: /\.js$/, loaders: jsLoaders, exclude: /node_modules/},
-      { test: /\.scss$/, loader: cssLoaders}
+      {test: /\.js$/, loaders: jsLoaders, exclude: /node_modules/},
+      {test: /\.scss$/, loader: cssLoaders}
     ]
   },
   postcss: [autoprefixer],
