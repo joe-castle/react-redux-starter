@@ -3,7 +3,7 @@ import './assets/sass/main.scss';
 import React from 'react';
 import {render} from 'react-dom';
 
-import App from './components/app';
+import App from './components/App';
 
 const store = configureStore(window.__INITIAL_STATE__);
 

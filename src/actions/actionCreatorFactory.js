@@ -1,5 +1,4 @@
-export const INCREMENT_COUNTER = 'INCEREMENT_COUNTER';
-export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+'use strict';
 
 /**
  * @description Action Creator Factory
@@ -11,7 +10,7 @@ export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
  * @return {Function} The action creator function.
  */
 export default (type, ...keys) => (...values) =>
-  keys.reduce((prev, key, index) => {
-    prev[key] = values[index];
-    return prev;
+  keys.reduce((action, key, index) => {
+    action[key] = values[index];
+    return action;
   }, {type});

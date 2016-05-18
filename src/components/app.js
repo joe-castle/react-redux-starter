@@ -1,25 +1,31 @@
-import React from 'react';
+import React, {PropTypes, Component} from 'react';
 
-import {incrementValue, decrementValue} from '../actions/counter-actions';
-import CounterButton from '../components/counter-button';
+import {incrementCounter, decrementCounter} from '../actions/counterActions';
+import CounterButton from '../components/CounterButton';
 
-const App = ({
-  counter,
-  dispatch
-}) => (
-	<div className='container'>
-    <h1>Hello World!</h1>
-    <p>React Starter Project</p>
-    <hr />
-    <p>Testing Redux</p>
-    <p>{counter}</p>
-    <CounterButton displayText='+'
-      onChangeClick={() => dispatch(incrementValue())}
-    />
-    <CounterButton displayText='-'
-      onChangeClick={() => dispatch(decrementValue())}
-    />
-	</div>
-);
+class App extends Component {
+  static propTypes = {
+    counter: PropTypes.number,
+    dispatch: PropTypes.func
+  };
+
+  render() {
+    const {counter, dispatch} = this.props;
+
+    return (
+      <div className='container'>
+        <h1>React Starter Project</h1>
+        <p>Test Redux:</p>
+        <p>{counter}</p>
+        <CounterButton displayText='+'
+          onChangeClick={() => dispatch(incrementCounter())}
+        />
+        <CounterButton displayText='-'
+          onChangeClick={() => dispatch(decrementCounter())}
+        />
+      </div>
+    );
+  }
+}
 
 export default App;

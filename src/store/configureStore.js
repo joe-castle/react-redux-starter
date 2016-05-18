@@ -9,7 +9,7 @@ module.exports = initialState => {
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
     module.hot.accept('../reducers', () =>
-      store.replaceReducer(rootReducer)
+      store.replaceReducer(require('../reducers').default)
     );
   }
 

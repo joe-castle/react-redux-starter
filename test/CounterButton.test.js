@@ -2,13 +2,15 @@ import {expect} from 'chai';
 import React from 'react';
 import sd from 'skin-deep';
 
-import CounterButton from '../src/components/counter-button';
+import CounterButton from '../src/components/CounterButton';
 
 describe('CounterButton Component', () => {
   let tree;
 
   beforeEach(() => {
-    tree = sd.shallowRender(<CounterButton displayText='+' onChangeClick={() => {}} />);
+    tree = sd.shallowRender(
+      <CounterButton displayText='+' onChangeClick={() => {}} />
+    );
   });
 
   it('Should render a button with displayText(+/-)', () => {

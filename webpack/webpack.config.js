@@ -11,7 +11,7 @@ let entry = './src/index'
   , plugins = [
     // Injects configureStore based on NODE_ENV.
     // Enables hot reloader if in dev mode.
-    new webpack.ProvidePlugin({configureStore: './store/configure-store'})
+    new webpack.ProvidePlugin({configureStore: './store/configureStore'})
   ];
 
 if (process.env.NODE_ENV === 'production') {
@@ -51,5 +51,10 @@ module.exports = {
     ]
   },
   postcss: [autoprefixer],
-  devtool: 'source-map'
+  devtool: 'source-map',
+  // Used in rendered html code, change for your project.
+  metaTags: {
+    title: 'React Redux Starter Project',
+    description: 'React Redux Starter Project'
+  }
 };

@@ -1,4 +1,4 @@
-import * as types from '../actions/action-types';
+import * as types from '../actions/actionTypes';
 
 export default (state = 0, {
   type
