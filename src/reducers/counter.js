@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 
 export default (state = 0, {
-  type
+  type,
 }) => {
   switch (type) {
     case types.INCREMENT_COUNTER: return state + 1;

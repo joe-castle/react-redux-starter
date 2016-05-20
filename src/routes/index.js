@@ -1,7 +1,5 @@
-'use strict';
-
-import React from 'React';
-import {createStore} from 'redux';
+import React from 'react';
+import { createStore } from 'redux';
 
 import express from 'express';
 const app = express();
@@ -12,11 +10,11 @@ import rootReducer from '../reducers';
 import App from '../components/App';
 
 // Uses redux to set default state for
-// values undefined in initialState object.
-const state = createStore(rootReducer, {counter: 5}).getState();
+// values not defined in initialState object.
+const state = createStore(rootReducer, { counter: 5 }).getState();
 
-app.use(express.static(`${__dirname}/../assets`));
+app.use('/assets', express.static(`${__dirname}/../assets`));
 
-app.get('*', serverRender(<App />, state));
+app.get('*', serverRender(<App {...state} />, state));
 
 export default app;

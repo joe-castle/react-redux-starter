@@ -3,11 +3,12 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const eslint = require('gulp-eslint');
+const friendlyFormatter = require('eslint-friendly-formatter');
 
 gulp.task('lint', () =>
   gulp.src('src/**/*.js')
   .pipe(eslint())
-  .pipe(eslint.format())
+  .pipe(eslint.format(friendlyFormatter))
   .pipe(eslint.failAfterError())
 );
 

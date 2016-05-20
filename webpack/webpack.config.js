@@ -38,10 +38,16 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
+  // Used in rendered html code, change for your project.
+  metaTags: {
+    title: 'React Redux Starter Project',
+    description: 'React Redux Starter Project'
+  },
   entry,
   output: {
     path: `${__dirname}/../build/assets`,
     filename: 'bundle.js',
+    publicPath: '/assets'
   },
   plugins,
   module: {
@@ -51,10 +57,5 @@ module.exports = {
     ]
   },
   postcss: [autoprefixer],
-  devtool: 'source-map',
-  // Used in rendered html code, change for your project.
-  metaTags: {
-    title: 'React Redux Starter Project',
-    description: 'React Redux Starter Project'
-  }
+  devtool: 'source-map'
 };

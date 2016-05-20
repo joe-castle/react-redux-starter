@@ -1,19 +1,22 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
-const CounterButton = ({
+function CounterButton({
   displayText,
-  onChangeClick
-}) => (
-  <button type='button'
-    onClick={onChangeClick}
-  >
-    {displayText}
-  </button>
-);
+  onChangeClick,
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onChangeClick}
+    >
+      {displayText}
+    </button>
+  );
+}
 
 CounterButton.propTypes = {
   displayText: PropTypes.string,
-  onChangeClick: PropTypes.func
+  onChangeClick: PropTypes.func,
 };
 
 export default CounterButton;

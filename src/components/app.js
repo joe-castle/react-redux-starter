@@ -1,31 +1,32 @@
-import React, {PropTypes, Component} from 'react';
+import React, { PropTypes } from 'react';
 
-import {incrementCounter, decrementCounter} from '../actions/counterActions';
+import { incrementCounter, decrementCounter } from '../actions/counterActions';
 import CounterButton from '../components/CounterButton';
 
-class App extends Component {
+// Class used as hot-reloader does not work with pure function components.
+export default class App extends React.Component {
   static propTypes = {
     counter: PropTypes.number,
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
   };
 
   render() {
-    const {counter, dispatch} = this.props;
+    const { counter, dispatch } = this.props;
 
     return (
-      <div className='container'>
+      <div className="container">
         <h1>React Starter Project</h1>
         <p>Test Redux:</p>
         <p>{counter}</p>
-        <CounterButton displayText='+'
+        <CounterButton
+          displayText="+"
           onChangeClick={() => dispatch(incrementCounter())}
         />
-        <CounterButton displayText='-'
+        <CounterButton
+          displayText="-"
           onChangeClick={() => dispatch(decrementCounter())}
         />
       </div>
     );
   }
 }
-
-export default App;

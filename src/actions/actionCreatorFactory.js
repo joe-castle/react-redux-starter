@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @description Action Creator Factory
  * Makes action creator functions with provided type and keys.
@@ -10,7 +8,7 @@
  * @return {Function} The action creator function.
  */
 export default (type, ...keys) => (...values) =>
-  keys.reduce((action, key, index) => {
-    action[key] = values[index];
-    return action;
-  }, {type});
+  keys.reduce((action, key, index) => ({
+    ...action,
+    [key]: values[index],
+  }), { type });
