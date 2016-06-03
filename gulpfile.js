@@ -6,7 +6,7 @@ const eslint = require('gulp-eslint');
 const friendlyFormatter = require('eslint-friendly-formatter');
 
 gulp.task('lint', () =>
-  gulp.src('src/**/*.js')
+  gulp.src(['src/**/*.js', 'test/**/*.js'])
   .pipe(eslint())
   .pipe(eslint.format(friendlyFormatter))
   .pipe(eslint.failAfterError())

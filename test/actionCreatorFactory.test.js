@@ -1,6 +1,4 @@
-'use strict';
-
-import {expect} from 'chai';
+import { expect } from 'chai';
 
 import factory from '../src/actions/actionCreatorFactory';
 
@@ -18,5 +16,5 @@ describe('Action Creator Facotry', () => {
       name: 'bob',
       age: 25,
     });
-  })
+  });
 });

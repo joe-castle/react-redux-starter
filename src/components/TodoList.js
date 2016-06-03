@@ -24,7 +24,7 @@ function TodoList({
 }
 
 TodoList.propTypes = {
-  todoText: PropTypes.string,
+  todos: PropTypes.array,
   completeTodo: PropTypes.func,
 };
 

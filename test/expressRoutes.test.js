@@ -1,5 +1,3 @@
-'use strict';
-
 import request from 'supertest';
 import app from '../src/routes';
 
@@ -9,7 +7,7 @@ describe('Express Routes', () => {
       request(app)
         .get('/')
         .expect(200)
-        .expect('Content-Type', /html/, done)
+        .expect('Content-Type', /html/, done);
     });
   });
 });

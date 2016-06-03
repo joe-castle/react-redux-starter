@@ -13,14 +13,13 @@ describe('Todos Reducer', () => {
     expect(todo.todoText).to.equal('Wash Dishes');
     expect(todo.complete).to.equal(false);
     expect(isValid(todo.id)).to.equal(true);
-
-  })
+  });
   it('Deletes a todo', () => {
     const initialState = [{
       todoText: 'Wash Dishes',
       complete: false,
       id: 'test_id',
-    }]
+    }];
     expect(todos(initialState, { type: 'DELETE_TODO', id: 'test_id' })).to.deep.equal([]);
   });
   it('Completes a todo', () => {

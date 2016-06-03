@@ -32,7 +32,7 @@ export default function todos(state = [], {
         ...state.slice(0, index),
         {
           ...state[index],
-          complete: !state[index].complete
+          complete: !state[index].complete,
         },
         ...state.slice(index + 1),
       ];

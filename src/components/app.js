@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import { addTodo, completeTodo, } from '../actions/todoActions';
+import { addTodo, completeTodo } from '../actions/todoActions';
 import TodoList from '../components/TodoList';
 
 // Class used as hot-reloader does not work with pure function components
@@ -12,7 +12,7 @@ export default class TodoApp extends React.Component {
   };
 
   render() {
-    const { todos, dispatch, } = this.props;
+    const { todos, dispatch } = this.props;
 
     return (
       <div className="container">
