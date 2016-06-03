@@ -7,7 +7,7 @@ import App from './components/App';
 
 const store = configureStore(window.INITIAL_STATE);
 
-const rend = () => {
+store.subscribe(() => {
   render(
     <App
       dispatch={store.dispatch}
@@ -15,8 +15,7 @@ const rend = () => {
     />,
     document.getElementById('root')
   );
-};
+});
 
-rend();
-
-store.subscribe(rend);
+// Initialises the render method on load.
+store.dispatch({ type: '@@init' });

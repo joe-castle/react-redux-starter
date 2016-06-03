@@ -1,13 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,500);
-
 body {
-  font-family: 'Roboto', sans-serif;
-}
-
-h1 {
-  font-size: $base-font-size * 3;
-}
-
-p {
-  padding: 5px;
+  color: $text-color;
+  font: normal 125% / 1.4 $text-font-stack;
 }

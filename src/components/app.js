@@ -1,31 +1,40 @@
 import React, { PropTypes } from 'react';
 
-import { incrementCounter, decrementCounter } from '../actions/counterActions';
-import CounterButton from '../components/CounterButton';
+import { addTodo, completeTodo, } from '../actions/todoActions';
+import TodoList from '../components/TodoList';
 
-// Class used as hot-reloader does not work with pure function components.
-export default class App extends React.Component {
+// Class used as hot-reloader does not work with pure function components
+// as the entry point.
+export default class TodoApp extends React.Component {
   static propTypes = {
-    counter: PropTypes.number,
+    todos: PropTypes.array,
     dispatch: PropTypes.func,
   };
 
   render() {
-    const { counter, dispatch } = this.props;
+    const { todos, dispatch, } = this.props;
 
     return (
       <div className="container">
-        <h1>React Starter Project</h1>
-        <p>Test Redux:</p>
-        <p>{counter}</p>
-        <CounterButton
-          displayText="+"
-          onChangeClick={() => dispatch(incrementCounter())}
-        />
-        <CounterButton
-          displayText="-"
-          onChangeClick={() => dispatch(decrementCounter())}
-        />
+        <header></header>
+        <main>
+          <h1>React & Redux Starter Project</h1>
+          <h4>Todo Example</h4>
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              dispatch(addTodo(this.refs.addTodo.value));
+              this.refs.addTodo.value = '';
+            }}
+          >
+            <input ref="addTodo" />
+          </form>
+          <TodoList
+            todos={todos}
+            completeTodo={id => dispatch(completeTodo(id))}
+          />
+        </main>
+        <footer></footer>
       </div>
     );
   }

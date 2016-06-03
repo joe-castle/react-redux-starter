@@ -7,8 +7,9 @@
  *
  * @return {Function} The action creator function.
  */
-export default (type, ...keys) => (...values) =>
+export default (type, ...keys) => (...values) => (
   keys.reduce((action, key, index) => ({
     ...action,
     [key]: values[index],
-  }), { type });
+  }), { type })
+);

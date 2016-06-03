@@ -1,17 +1,17 @@
 import React from 'react';
 import { createStore } from 'redux';
-
 import express from 'express';
-const app = express();
 
 import serverRender from '../serverRender';
 import rootReducer from '../reducers';
 
 import App from '../components/App';
 
+const app = express();
+
 // Uses redux to set default state for
 // values not defined in initialState object.
-const state = createStore(rootReducer, { counter: 5 }).getState();
+const state = createStore(rootReducer).getState();
 
 app.use('/assets', express.static(`${__dirname}/../assets`));
 

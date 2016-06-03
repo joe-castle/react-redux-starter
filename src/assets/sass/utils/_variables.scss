@@ -1,2 +1,43 @@
-$base-font-size: 16px;
-$base-font-color: red;
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+// Regular font family
+// @type List
+$text-font-stack: 'Roboto', 'Arial', sans-serif !default;
+
+// Code (monospace) font family
+// @type List
+$code-font-stack: 'Courier New', 'Monaco', monospace !default;
+
+// Copy text color
+// @type Color
+$text-color: rgb(34, 34, 34) !default;
+
+// Container's maximum width
+// @type Length
+$max-width: 1180px !default;
+
+// Breakpoints map
+// @prop {String} keys - Keys are identifiers mapped to a given length
+// @prop {Map} values - Values are actual breakpoints expressed in pixels
+// @see {mixin} respond-to
+$breakpoints: (
+  'small': (min-width: 320px),
+  'medium': (min-width: 768px),
+  'large': (min-width: 1024px),
+) !default;
+
+// Relative or absolute URL where all assets are served from
+// @type String
+$base-url: '/assets/' !default;
+
+// Used in creating a meterial design box-shdaow
+$z-depth-grades: (
+  1: (1: 0 2px 5px 0 rgba(0,0,0,0.16), 2: 0 2px 10px 0 rgba(0,0,0,0.12)),
+  1.5: (1: 0 5px 11px 0 rgba(0,0,0,0.18), 2: 0 4px 15px 0 rgba(0,0,0,0.15)),
+  2: (1: 0 8px 17px 0 rgba(0,0,0,0.2), 2: 0 6px 20px 0 rgba(0,0,0,0.19)),
+  3: (1: 0 12px 15px 0 rgba(0,0,0,0.24), 2: 0 17px 50px 0 rgba(0,0,0,0.19)),
+  4: (1: 0 16px 28px 0 rgba(0,0,0,0.22), 2: 0 25px 55px 0 rgba(0,0,0,0.21)),
+  5: (1: 0 27px 24px 0 rgba(0,0,0,0.2), 2: 0 40px 77px 0 rgba(0,0,0,0.22))
+);

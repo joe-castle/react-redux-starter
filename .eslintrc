@@ -1,17 +1,10 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
-  "ecmaFeatures": {
-    "experimentalObjectRestSpread": true,
-    "modules": true
-  },
-  "env": {
-    "browser": true,
-  },
   "rules": {
-    "no-console": 0,
-    "no-undef": 0,
-    "react/prefer-stateless-function": 0,
-    "global-require": 0
+    "no-console": 1,
+    "no-undef": 1,
+    "react/prefer-stateless-function": 1,
+    "global-require": 1
   }
 }
