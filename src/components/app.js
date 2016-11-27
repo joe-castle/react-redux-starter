@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import { addTodo, completeTodo } from '../actions/todoActions';
 import TodoList from '../components/TodoList';
 
 // Class used as hot-reloader does not work with pure function components
 // as the entry point.
-export default class TodoApp extends React.Component {
+class App extends React.Component {
   static propTypes = {
     todos: PropTypes.array,
     dispatch: PropTypes.func,
@@ -39,3 +40,7 @@ export default class TodoApp extends React.Component {
     );
   }
 }
+
+export default connect(
+  ({ todos }) => ({ todos })
+)(App);

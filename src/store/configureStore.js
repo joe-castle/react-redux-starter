@@ -2,7 +2,7 @@ import { createStore } from 'redux';
 
 import rootReducer from '../reducers';
 
-module.exports = initialState => {
+export default initialState => {
   const store = createStore(rootReducer, initialState,
     window.devToolsExtension ? window.devToolsExtension() : f => f
   );

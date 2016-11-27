@@ -4,7 +4,8 @@ import redis from 'redis';
 promisifyAll(redis.RedisClient.prototype);
 
 // If there is no REDISTOGO_URL, defaults to localhost, port 6379.
-const client = redis.createClient(process.env.REDISTOGO_URL)
+const client = redis
+  .createClient(process.env.REDISTOGO_URL)
   .on('error', console.log);
 
 if (process.env.NODE_ENV === 'test') {

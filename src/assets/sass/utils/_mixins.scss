@@ -1,8 +1,0 @@
-// -----------------------------------------------------------------------------
-// This file contains all application-wide Sass mixins.
-// -----------------------------------------------------------------------------
-
-// Creates a material design style box-shadow.
-@mixin z-depth($grade) {
-  box-shadow: create-z-depth($grade);
-}

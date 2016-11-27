@@ -1,6 +1,6 @@
 import client from './client';
 
-export default (hash) => ({
+export default hash => ({
   exists: field => client.hexistsAsync(hash, field),
   del: field => client.hdel(hash, field),
   set: (field, value) => client.hset(hash, field, JSON.stringify(value)),

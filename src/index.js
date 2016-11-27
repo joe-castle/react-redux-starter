@@ -1,21 +1,36 @@
-import './assets/sass/main.scss';
+import './assets/stylus/main.styl';
 
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { AppContainer } from 'react-hot-loader';
 
-import App from './components/App';
+import configureStore from './store/configureStore';
+
+import Root from './Root';
 
 const store = configureStore(window.INITIAL_STATE);
 
-store.subscribe(() => {
-  render(
-    <App
-      dispatch={store.dispatch}
-      {...store.getState()}
-    />,
-    document.getElementById('root')
-  );
-});
+ReactDOM.render(
+  <AppContainer>
+    <Provider store={store}>
+      <Root store={store} />
+    </Provider>
+  </AppContainer>,
+  document.getElementById('root')
+);
 
-// Initialises the render method on load.
-store.dispatch({ type: '@@init' });
+if (module.hot) {
+  module.hot.accept('./Root', () => {
+    const NewRoot = require('./Root').default;
+
+    ReactDOM.render(
+      <AppContainer>
+        <Provider store={store}>
+          <NewRoot store={store} />
+        </Provider>
+      </AppContainer>,
+      document.getElementById('root')
+    );
+  })
+}
