@@ -6,9 +6,13 @@ import TodoList from '../components/TodoList';
 
 // Class used as hot-reloader does not work with pure function components
 // as the entry point.
-class App extends React.Component {
+export class App extends React.Component {
   static propTypes = {
-    todos: PropTypes.array,
+    todos: PropTypes.arrayOf(PropTypes.shape({
+      todoText: PropTypes.string,
+      complete: PropTypes.bool,
+      id: PropTypes.string,
+    })),
     dispatch: PropTypes.func,
   };
 
@@ -16,31 +20,29 @@ class App extends React.Component {
     const { todos, dispatch } = this.props;
 
     return (
-      <div className="container">
-        <header></header>
+      <div className="App">
         <main>
           <h1>React & Redux Starter Project</h1>
           <h4>Todo Example</h4>
           <form
-            onSubmit={e => {
-              e.preventDefault();
-              dispatch(addTodo(this.refs.addTodo.value));
-              this.refs.addTodo.value = '';
+            onSubmit={(ev) => {
+              ev.preventDefault();
+              dispatch(addTodo(this.addTodo.value));
+              this.addTodo.value = '';
             }}
           >
-            <input ref="addTodo" />
+            <input ref={(c) => { this.addTodo = c; }} />
           </form>
           <TodoList
             todos={todos}
             completeTodo={id => dispatch(completeTodo(id))}
           />
         </main>
-        <footer></footer>
       </div>
     );
   }
 }
 
 export default connect(
-  ({ todos }) => ({ todos })
+  ({ todos }) => ({ todos }),
 )(App);

@@ -5,15 +5,16 @@ function TodoList({
   todos,
   completeTodo,
 }) {
+  /* eslint-disable jsx-a11y/no-static-element-interactions */
   return (
     <ul className="TodoList">
       {todos.map(todo => (
         <li
           key={todo.id}
-          className={classNames(
-            'TodoList__item',
-            { 'TodoList__item--complete': todo.complete }
-          )}
+          className={classNames({
+            TodoList__item: true,
+            'TodoList__item--complete': todo.complete,
+          })}
           onClick={() => completeTodo(todo.id)}
         >
           {todo.todoText}
@@ -21,10 +22,15 @@ function TodoList({
       ))}
     </ul>
   );
+  /* eslint-disable jsx-a11y/no-static-element-interactions */
 }
 
 TodoList.propTypes = {
-  todos: PropTypes.array,
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    todoText: PropTypes.string,
+    complete: PropTypes.bool,
+    id: PropTypes.string,
+  })),
   completeTodo: PropTypes.func,
 };
 

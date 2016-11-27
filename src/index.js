@@ -1,9 +1,9 @@
-import './assets/stylus/main.styl';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
+
+import './assets/stylus/main.styl';
 
 import configureStore from './store/configureStore';
 
@@ -17,12 +17,14 @@ ReactDOM.render(
       <Root store={store} />
     </Provider>
   </AppContainer>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 if (module.hot) {
   module.hot.accept('./Root', () => {
+    /* eslint-disable global-require */
     const NewRoot = require('./Root').default;
+    /* eslint-disable global-require */
 
     ReactDOM.render(
       <AppContainer>
@@ -30,7 +32,7 @@ if (module.hot) {
           <NewRoot store={store} />
         </Provider>
       </AppContainer>,
-      document.getElementById('root')
+      document.getElementById('root'),
     );
-  })
+  });
 }

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import factory from '../src/actions/actionCreatorFactory';
+import factory from '../../src/actions/actionCreatorFactory';
 
 describe('Action Creator Facotry', () => {
   it('Returns an action creater with type and keys', () => {

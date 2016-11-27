@@ -14,12 +14,12 @@ export default function todos(state = [], {
   switch (type) {
     case ADD_TODO:
       return [
+        ...state.slice(),
         {
           todoText,
           complete: false,
           id: generate(),
         },
-        ...state.slice(),
       ];
 
     case DELETE_TODO:

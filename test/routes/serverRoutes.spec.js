@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../src/routes';
+import app from '../../src/routes/serverRoutes';
 
 describe('Express Routes', () => {
   describe('To root path', () => {

@@ -2,7 +2,12 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "env": {
-    "mocha": true
+    "mocha": true,
+    "browser": true,
+    "node": true
   },
-  "rules": {}
+  "rules": {
+    "react/jsx-filename-extension": 0,
+    "import/no-named-as-default": 1,
+  }
 }

@@ -1,4 +1,4 @@
-import { renderToString } from 'react-dom/server'
+import { renderToString } from 'react-dom/server';
 
 // TODO: Update description
 // TODO: Update title

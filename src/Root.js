@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import routes from './routes/react-routes';
+import routes from './routes/reactRoutes';
 
-export default function Root({ store }) {
+function Root({ store }) {
   return (
     <Router
       history={syncHistoryWithStore(browserHistory, store)}
@@ -12,3 +12,13 @@ export default function Root({ store }) {
     />
   );
 }
+
+Root.propTypes = {
+  store: PropTypes.shape({
+    getState: PropTypes.func,
+    dispatch: PropTypes.func,
+    subscribe: PropTypes.func,
+  }),
+};
+
+export default Root;

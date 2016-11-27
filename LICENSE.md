@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-// Insert Project Title
+React Redux Starter
 
 Copyright (c) 2016 Joe Smith
 
