@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import routes from './routes/reactRoutes';
+import routes from './routes/react';
 
 function Root({ store }) {
   return (

@@ -3,7 +3,7 @@ import sd from 'skin-deep';
 import chai from 'chai';
 import dirtyChai from 'dirty-chai';
 
-import { App } from '../../src/components/App';
+import { App } from './App';
 
 chai.use(dirtyChai);
 

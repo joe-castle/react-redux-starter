@@ -1,7 +1,16 @@
+
+/**
+ * KARMA!
+ * DATABASE!
+ * ENZYME!
+ * REACT-SCRIPTS!ßß
+ *
+ */
+
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { addTodo, completeTodo } from '../actions/todoActions';
+import { addTodo, completeTodo } from '../actions/todos';
 import TodoList from '../components/TodoList';
 
 // Class used as hot-reloader does not work with pure function components

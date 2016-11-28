@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { isValid } from 'shortid';
 
-import todos from '../../src/reducers/todos';
+import todos from './todos';
 
 describe('Todos Reducer', () => {
   it('Returns the initial state', () => {

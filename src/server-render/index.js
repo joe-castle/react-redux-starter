@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 
 import rootReducer from '../reducers';
-import routes from '../routes/reactRoutes';
+import routes from '../routes/react';
 import template from './template';
 
 // TODO: provide INITIAL_STATE

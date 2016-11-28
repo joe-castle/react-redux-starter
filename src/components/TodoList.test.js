@@ -3,7 +3,7 @@ import sd from 'skin-deep';
 import chai from 'chai';
 import dirtyChai from 'dirty-chai';
 
-import TodoList from '../../src/components/TodoList';
+import TodoList from './TodoList';
 
 chai.use(dirtyChai);
 

@@ -1,4 +1,4 @@
-import app from './routes/serverRoutes';
+import app from './routes/server';
 
 const port = process.env.PORT || 3000;
 

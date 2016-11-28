@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { addTodo, deleteTodo, completeTodo } from '../../src/actions/todoActions';
+import { addTodo, deleteTodo, completeTodo } from './todos';
 
 describe('Todo Actions', () => {
   it('Creates an add todo action', () => {
