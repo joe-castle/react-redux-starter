@@ -3,7 +3,7 @@
  * KARMA!
  * DATABASE!
  * ENZYME!
- * REACT-SCRIPTS!ßß
+ * REACT-SCRIPTS!
  *
  */
 
