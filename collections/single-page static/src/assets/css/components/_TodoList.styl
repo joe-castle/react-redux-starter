@@ -1,0 +1,32 @@
+.TodoList
+  padding 0
+
+  li
+    border-top 1px solid #ccc
+    border-left 1px solid #ccc
+    border-right 1px solid #ccc
+    cursor pointer
+    font-size 18px
+    padding 10px
+    list-style none
+    relative()
+
+    +hover-state()
+      background rgba(80%, 80%, 80%, .2)
+
+    &:last-child
+      border-bottom 1px solid #ccc
+
+    &.complete
+      background #eee
+      
+      .text
+        text-decoration line-through
+
+    .delete
+      color #ccc
+      font-weight 700
+      absolute right 10px
+
+      +hover-state()
+        color rgba(85.1%, 0%, 0%, 0.859)

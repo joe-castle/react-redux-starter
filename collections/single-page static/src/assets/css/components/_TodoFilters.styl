@@ -1,0 +1,26 @@
+.TodoFilters
+  display flex
+  justify-content center
+  margin 10px 0
+  width 100%
+
+  button
+    background none
+    color #ccc
+    cursor pointer
+    border 1px solid #ccc
+    font-size 18px
+    font-weight 300
+    padding 10px
+    
+    &:not(:last-child)
+      margin-right 10px
+
+    +hover-state()
+      background #ccc
+      color white
+      outline none
+    
+    &.active
+      background #ccc
+      color white
