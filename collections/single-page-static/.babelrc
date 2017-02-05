@@ -1,0 +1,5 @@
+{
+  // Babelrc is primarily for webpack config.
+  // Webpack config overides es2015 modules for tree shaking.
+  "presets": ["es2015", "stage-0"]
+}

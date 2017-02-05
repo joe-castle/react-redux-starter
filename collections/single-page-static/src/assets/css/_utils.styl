@@ -1,7 +1,7 @@
 // ---------------------------------------------
 // ------ Variables
 // ---------------------------------------------
-text-font-stack = 'Source Sans Pro', 'Arial', sans-serif
+text-font-stack = 'Roboto', 'Arial', sans-serif
 code-font-stack = 'Source Code Pro', 'Monaco', monospace
 
 breakpoints = {
@@ -9,14 +9,6 @@ breakpoints = {
   mobileLandscape: '480 - 767'
   tablet: '768px - 991',
   desktop: 992
-}
-
-// Used in creating a meterial design box-shdaow
-z-depth-grades = {
-  '1': {
-    normal: '0 1px 4px 0 rgba(0,0,0,0.37)',
-    hover: '0 2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3)'
-  },
 }
 
 
@@ -29,21 +21,12 @@ z-depth-grades = {
 // ------ Mixins
 // ---------------------------------------------
 
-// Creates a material design style box-shadow.
-z-depth(grade, hover = false)
-  box-shadow: unquote(z-depth-grades[grade].normal)
-  transition box-shadow .2s linear
-
-  if hover
-    +hover-state()
-      box-shadow: unquote(z-depth-grades[grade].hover)
-
 // Save having to right hover, active and focus on all links.
-// TODO: Provide a transition for all hoverstates ?
 hover-state()
   &:hover
   &:active
   &:focus
+    transition all .2s linear
     {block}
 
 // Nibs position Mixins

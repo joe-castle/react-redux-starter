@@ -20,7 +20,7 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-if (module.hot) {
+if (process.env.NODE_ENV !== 'production' && module.hot) {
   module.hot.accept('./Root', () => {
     /* eslint-disable global-require */
     const NewRoot = require('./Root').default;

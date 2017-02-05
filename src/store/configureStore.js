@@ -6,6 +6,7 @@ export default (initialState) => {
   const store = createStore(rootReducer, initialState,
     window.devToolsExtension ? window.devToolsExtension() : f => f,
   );
+  // TODO: Only have devToolsExtension in devlopment?
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
     module.hot.accept('../reducers', () =>
