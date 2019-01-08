@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, css } from 'aphrodite';
+import styled from 'styled-components';
 
 import { Actions } from '../store/actions';
 
@@ -8,31 +8,32 @@ import TodoList from '../components/TodoList';
 import TodoForm from '../components/TodoForm';
 import TodoFilters from '../components/TodoFilters';
 
-const styles = StyleSheet.create({
-  app: {
-    margin: '100px auto',
-    maxWidth: '600px',
-  },
-  main: {
-    boxShadow: '2px 2px 5px 2px rgba(0,0,0,.1), ' +
-      '-2px -2px 5px 2px rgba(0,0,0,.1), ' +
-      '2px -2px 5px 2px rgba(0,0,0,.1), ' +
-      '-2px 2px 5px 2px rgba(0,0,0,.1)',
-  },
-  container: {
-    margin: '0 auto',
-    padding: '10px',
-    width: '80%',
-  },
-  heading: {
-    color: 'rgba(85.1%, 0%, 0%, 0.859)',
-    fontSize: '75px',
-    fontWeight: '300',
-    margin: '0',
-    padding: '15px',
-    textAlign: 'center',
-  },
-});
+const Container = styled.div`
+  margin: 100px auto;
+  max-width: 600px;
+`;
+
+const Main = styled.main`
+  box-shadow: 2px 2px 5px 2px rgba(0,0,0,.1),
+      -2px -2px 5px 2px rgba(0,0,0,.1),
+      2px -2px 5px 2px rgba(0,0,0,.1),
+      -2px 2px 5px 2px rgba(0,0,0,.1)
+`;
+
+const Wrapper = styled.div`
+  margin: 0 auto;
+  padding: 10px;
+  width: 80%;
+`;
+
+const Heading = styled.h2`
+  color: rgba(85.1%, 0%, 0%, 0.859);
+  font-size: 75px;
+  font-weight: 300;
+  margin: 0;
+  padding: 15px;
+  text-align: center;
+`;
 
 // Class is required at entry for hot-reloading
 /* eslint-disable react/prefer-stateless-function */
@@ -52,10 +53,10 @@ export class App extends React.Component {
 
   render() {
     return (
-      <div className={css(styles.app)}>
-        <main className={css(styles.main)}>
-          <div className={css(styles.container)}>
-            <h2 className={css(styles.heading)}>todos</h2>
+      <Container>
+        <Main>
+          <Wrapper>
+            <Heading>todos</Heading>
             <TodoForm ADD_TODO={this.props.ADD_TODO} />
             <TodoList
               todos={this.props.todos}
@@ -66,9 +67,9 @@ export class App extends React.Component {
               filter={this.props.filter}
               SET_FILTER={this.props.SET_FILTER}
             />
-          </div>
-        </main>
-      </div>
+          </Wrapper>
+        </Main>
+      </Container>
     );
   }
 }

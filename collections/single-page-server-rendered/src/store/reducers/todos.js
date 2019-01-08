@@ -1,11 +1,11 @@
-import { generate } from 'shortid';
+import { generate } from 'shortid'
 
-import { Constants } from '../actions';
+import { Constants } from '../actions'
 
-export default function todos(state = [], {
+export default function todos (state = [], {
   id,
   type,
-  todoText,
+  todoText
 }) {
   switch (type) {
     case Constants.ADD_TODO:
@@ -14,27 +14,27 @@ export default function todos(state = [], {
         {
           id: generate(),
           todoText,
-          complete: false,
-        },
-      ];
+          complete: false
+        }
+      ]
 
     case Constants.DELETE_TODO:
-      return state.filter(todo => todo.id !== id);
+      return state.filter(todo => todo.id !== id)
 
     case Constants.COMPLETE_TODO: {
-      const index = state.findIndex(todo => todo.id === id);
+      const index = state.findIndex(todo => todo.id === id)
 
       return [
         ...state.slice(0, index),
         {
           ...state[index],
-          complete: !state[index].complete,
+          complete: !state[index].complete
         },
-        ...state.slice(index + 1),
-      ];
+        ...state.slice(index + 1)
+      ]
     }
 
     default:
-      return state;
+      return state
   }
 }

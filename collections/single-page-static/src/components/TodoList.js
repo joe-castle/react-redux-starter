@@ -1,57 +1,60 @@
 import React, { PropTypes } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import styled from 'styled-components';
 
 /**
  * TODO: Fix stles, currently, not last-child is not selecting correctly
  * so borders look off.
  */
 
-const styles = StyleSheet.create({
-  todoList: {
-    padding: '0',
+const List = styled.ul`
+  padding: 0;
+`;
+
+const TodoItem = styled.li`
+  cursor: pointer;
+  font-size: 18px;
+  list-style: none;
+  position: relative;
+`;
+
+const TodoText = styled.span`
+  background: ${({ complete }) => complete ? '#eee' : 'none'}
+  border: 1px solid #ccc;
+  display: inline-block;
+  font-style: ${({ complete }) => complete ? 'italic' : 'normal'}
+  padding: 10px;
+  text-decoration: ${({ complete }) => complete ? 'line-through' : 'none'}
+  width: 90%;
+
+  &:hover {
+    background: rgba(80%, 80%, 80%, .2);
+  }
+
+  &:not(:last-child) {
+    border-bottom: 0;
   },
-  todoItem: {
-    cursor: 'pointer',
-    fontSize: '18px',
-    listStyle: 'none',
-    position: 'relative',
-  },
-  todoText: {
-    border: '1px solid #ccc',
-    display: 'inline-block',
-    padding: '10px',
-    width: '90%',
-    ':hover': {
-      background: 'rgba(80%, 80%, 80%, .2)',
-    },
-    ':not(:last-child)': {
-      borderBottom: '0',
-    },
-  },
-  todoTextComplete: {
-    background: '#eee',
-    fontStyle: 'italic',
-    textDecoration: 'line-through',
-  },
-  deleteTodo: {
-    border: '1px solid #ccc',
-    color: '#ccc',
-    display: 'inline-block',
-    fontWeight: '700',
-    height: '100%',
-    position: 'absolute',
-    right: 0,
-    textAlign: 'center',
-    width: '9%',
-    ':hover': {
-      color: 'white',
-      background: 'rgba(85.1%, 0%, 0%, 0.6)',
-    },
-    ':not(:last-child)': {
-      borderBottom: '0',
-    },
-  },
-});
+`;
+
+const TodoDelete = styled.span`
+  border: 1px solid #ccc;
+  color: #ccc;
+  display: inline-block;
+  font-weight: 700;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 9%;
+  
+  &:hover {
+    color: white,
+    background: rgba(85.1%, 0%, 0%, 0.6);
+  }
+
+  &:not(:last-child) {
+    border-bottom: 0;
+  }
+`;
 
 function TodoList({
   todos,
@@ -60,30 +63,19 @@ function TodoList({
 }) {
   /* eslint-disable jsx-a11y/no-static-element-interactions */
   return (
-    <ul className={css(styles.todoList)}>
+    <List>
       {todos.map(todo => (
-        <li
-          className={css(styles.todoItem)}
-          key={todo.id}
-        >
-          <span
-            className={css(
-              styles.todoText,
-              todo.complete && styles.todoTextComplete,
-            )}
+        <TodoItem key={todo.id}>
+          <TodoText
+            complete={todo.complete}
             onClick={() => COMPLETE_TODO(todo.id)}
           >
             {todo.todoText}
-          </span>
-          <span
-            className={css(styles.deleteTodo)}
-            onClick={() => DELETE_TODO(todo.id)}
-          >
-            x
-          </span>
-        </li>
+          </TodoText>
+          <TodoDelete onClick={() => DELETE_TODO(todo.id)}>x</TodoDelete>
+        </TodoItem>
       ))}
-    </ul>
+    </List>
   );
   /* eslint-disable jsx-a11y/no-static-element-interactions */
 }

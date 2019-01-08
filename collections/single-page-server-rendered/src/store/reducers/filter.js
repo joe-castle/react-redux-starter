@@ -1,14 +1,14 @@
-import { Constants } from '../actions';
+import { Constants } from '../actions'
 
-export default function filter(state = 'All', {
+export default function filter (state = 'All', {
   type,
-  value,
+  value
 }) {
   switch (type) {
     case Constants.SET_FILTER:
-      return value;
+      return value
 
     default:
-      return state;
+      return state
   }
 }

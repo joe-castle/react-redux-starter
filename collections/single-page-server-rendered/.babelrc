@@ -1,5 +1,10 @@
 {
-  // Babelrc is primarily for webpack config.
-  // Webpack config overides es2015 modules for tree shaking.
-  "presets": ["es2015", "stage-0"]
+  "presets": [
+    "@babel/preset-env", 
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "babel-plugin-styled-components"
+  ]
 }

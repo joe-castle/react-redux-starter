@@ -7,6 +7,7 @@ import './assets/css/main.styl';
 
 import configureStore from './store/configureStore';
 
+/* eslint-disable import/no-named-as-default */
 import App from './components/App';
 
 const store = configureStore(/* PROVIDE INITIAL_STATE HERE */);

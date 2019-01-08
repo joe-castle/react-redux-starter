@@ -1,67 +1,45 @@
 import React, { PropTypes } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import styled from 'styled-components';
 
-const styles = StyleSheet.create({
-  todoFilters: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: '10px 0',
-    width: '100%',
-  },
-  filterButton: {
-    background: 'none',
-    color: '#ccc',
-    cursor: 'pointer',
-    border: '1px solid #ccc',
-    fontSize: '18px',
-    fontWeight: '300',
-    padding: '10px',
-    ':not(:last-child)': {
-      marginRight: '10px',
-    },
-    ':hover': {
-      background: '#ccc',
-      color: 'white',
-      outline: 'none',
-    },
-  },
-  filterActive: {
-    background: '#ccc',
-    color: 'white',
-  },
-});
+const Filters = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  width: 100%;
+`;
+
+const FilterButton = styled.button`
+  background: ${({ active }) => active ? '#ccc' : 'none'};
+  color: ${({ active }) => active ? 'white' : '#ccc'};
+  cursor: pointer;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 10px;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    background: #ccc;
+    color: white;
+    outline: none;
+  }
+`;
 
 function TodoFilters({ filter, SET_FILTER }) {
   return (
-    <div className={css(styles.todoFilters)}>
-      <button
-        className={css(
-          styles.filterButton,
-          filter === 'All' && styles.filterActive,
-        )}
-        onClick={() => SET_FILTER('All')}
-      >
-        All
-      </button>
-      <button
-        className={css(
-          styles.filterButton,
-          filter === 'Active' && styles.filterActive,
-        )}
-        onClick={() => SET_FILTER('Active')}
-      >
-        Active
-      </button>
-      <button
-        className={css(
-          styles.filterButton,
-          filter === 'Completed' && styles.filterActive,
-        )}
-        onClick={() => SET_FILTER('Completed')}
-      >
-        Completed
-      </button>
-    </div>
+    <Filters>
+      {['All', 'Active', 'Completed'].map(item => (
+        <FilterButton
+          active={filter === item}
+          onClick={() => SET_FILTER(item)}
+        >
+          {item}
+        </FilterButton>
+      ))}
+    </Filters>
   );
 }
 

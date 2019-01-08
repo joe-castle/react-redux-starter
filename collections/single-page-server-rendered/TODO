@@ -1,0 +1,18 @@
+Upgrade:
+    ✔ Upgrade to webpack 4 @done(19-01-07 15:09)
+    ✔ Upgrade rest of dependencies @done(19-01-07 15:09)
+    ✔ @babel changes @done(19-01-07 15:09)
+    ✔ Analyze rest of the dependencies @done(19-01-07 16:27)
+    ✔ Move from aphrodite to style-components @done(19-01-08 13:54)
+    ☐ React-hot-loader changes
+        ☐ use functional component for entry point instead of class
+    ☐ Any redux loading changes?
+    ☐ redux-easy-actions to redux-actions 
+    ✔ eslint to standard? @done(19-01-07 15:09)
+    ✔ postcss.config.js ? @done(19-01-07 16:09)
+    ☐ turn webpack back to using babel, rather than require
+        ☐ and postcss.config.js
+    ☐ move from mocha to jest
+    ☐ cypress
+    ☐ typescript
+    ☐ move it off dropbox to github

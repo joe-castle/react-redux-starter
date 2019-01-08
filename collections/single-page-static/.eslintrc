@@ -9,5 +9,7 @@
   "rules": {
     "react/jsx-filename-extension": 0,
     "import/no-named-as-default": 1,
+    "import/extensions": 0,
+    "no-confusing-arrow": 0
   }
 }
