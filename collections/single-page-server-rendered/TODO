@@ -4,8 +4,8 @@ Upgrade:
     ✔ @babel changes @done(19-01-07 15:09)
     ✔ Analyze rest of the dependencies @done(19-01-07 16:27)
     ✔ Move from aphrodite to style-components @done(19-01-08 13:54)
-    ☐ React-hot-loader changes
-        ☐ use functional component for entry point instead of class
+    ✔ React-hot-loader changes @done(19-01-08 15:02)
+        ✔ use functional component for entry point instead of class @done(19-01-08 15:02)
     ☐ Any redux loading changes?
     ☐ redux-easy-actions to redux-actions 
     ✔ eslint to standard? @done(19-01-07 15:09)
@@ -15,4 +15,4 @@ Upgrade:
     ☐ move from mocha to jest
     ☐ cypress
     ☐ typescript
-    ☐ move it off dropbox to github
+    ✔ move it off dropbox to github @done(19-01-08 14:37)

@@ -19,18 +19,3 @@ ReactDOM.render(
   </AppContainer>,
   document.getElementById('root')
 )
-
-if (process.env.NODE_ENV !== 'production' && module.hot) {
-  module.hot.accept('./components/App', () => {
-    const NewApp = require('./components/App').default
-
-    ReactDOM.render(
-      <AppContainer>`
-        <Provider store={store}>
-          <NewApp />
-        </Provider>
-      </AppContainer>,
-      document.getElementById('root')
-    )
-  })
-}

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { hot } from 'react-hot-loader/root'
 import styled from 'styled-components'
 
 import { Actions } from '../store/actions'
@@ -36,42 +37,39 @@ const Heading = styled.h2`
   text-align: center;
 `
 
-// Class is required at entry for hot-reloading
-export class App extends React.Component {
-  static propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.shape({
-      todoText: PropTypes.string,
-      complete: PropTypes.bool,
-      id: PropTypes.string
-    })).isRequired,
-    filter: PropTypes.string.isRequired,
-    COMPLETE_TODO: PropTypes.func.isRequired,
-    DELETE_TODO: PropTypes.func.isRequired,
-    ADD_TODO: PropTypes.func.isRequired,
-    SET_FILTER: PropTypes.func.isRequired
-  }
+function App (props) {
+  return (
+    <TopStyle>
+      <Main>
+        <Container>
+          <Heading>todos</Heading>
+          <TodoForm ADD_TODO={props.ADD_TODO} />
+          <TodoList
+            todos={props.todos}
+            COMPLETE_TODO={props.COMPLETE_TODO}
+            DELETE_TODO={props.DELETE_TODO}
+          />
+          <TodoFilters
+            filter={props.filter}
+            SET_FILTER={props.SET_FILTER}
+          />
+        </Container>
+      </Main>
+    </TopStyle>
+  )
+}
 
-  render () {
-    return (
-      <TopStyle>
-        <Main>
-          <Container>
-            <Heading>todos hello</Heading>
-            <TodoForm ADD_TODO={this.props.ADD_TODO} />
-            <TodoList
-              todos={this.props.todos}
-              COMPLETE_TODO={this.props.COMPLETE_TODO}
-              DELETE_TODO={this.props.DELETE_TODO}
-            />
-            <TodoFilters
-              filter={this.props.filter}
-              SET_FILTER={this.props.SET_FILTER}
-            />
-          </Container>
-        </Main>
-      </TopStyle>
-    )
-  }
+App.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    todoText: PropTypes.string,
+    complete: PropTypes.bool,
+    id: PropTypes.string
+  })).isRequired,
+  filter: PropTypes.string.isRequired,
+  COMPLETE_TODO: PropTypes.func.isRequired,
+  DELETE_TODO: PropTypes.func.isRequired,
+  ADD_TODO: PropTypes.func.isRequired,
+  SET_FILTER: PropTypes.func.isRequired
 }
 
 function visibleTodos (todos, filter) {
@@ -88,10 +86,11 @@ function visibleTodos (todos, filter) {
   }
 }
 
-export default connect(
-  ({ todos, filter }) => ({
+function mapStateToProps ({ todos, filter }) {
+  return {
     todos: visibleTodos(todos, filter),
     filter
-  }),
-  Actions
-)(App)
+  }
+}
+
+export default hot(connect(mapStateToProps, Actions)(App))
