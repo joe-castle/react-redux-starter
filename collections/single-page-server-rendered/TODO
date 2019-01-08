@@ -6,7 +6,7 @@ Upgrade:
     ✔ Move from aphrodite to style-components @done(19-01-08 13:54)
     ✔ React-hot-loader changes @done(19-01-08 15:02)
         ✔ use functional component for entry point instead of class @done(19-01-08 15:02)
-    ☐ Any redux loading changes?
+    ✔ Any redux loading changes? @done(19-01-08 16:01)
     ☐ redux-easy-actions to redux-actions 
     ✔ eslint to standard? @done(19-01-07 15:09)
     ✔ postcss.config.js ? @done(19-01-07 16:09)

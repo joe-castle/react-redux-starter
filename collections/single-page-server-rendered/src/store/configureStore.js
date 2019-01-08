@@ -1,13 +1,11 @@
-import { createStore, compose, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 import rootReducer from './reducers'
 
 export default (initialState) => {
-  const store = createStore(rootReducer, initialState, compose(
-    applyMiddleware(/* MIDDLEWARE GOES HERE */),
-    window.devToolsExtension && module.hot
-      ? window.devToolsExtension()
-      : f => f
+  const store = createStore(rootReducer, initialState, composeWithDevTools(
+    applyMiddleware(/* MIDDLEWARE GOES HERE */)
   ))
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
