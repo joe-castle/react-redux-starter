@@ -1,0 +1,10 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "collections/single-page-server-rendered/package.json",
+        "collections/single-page-static/package.json"
+      ]
+    }
+  }
+}
